@@ -5,10 +5,11 @@ type TTextEditorProps = {
   defaultValue: string;
   saveFn: Function;
   title?: string;
+  validationFn?: Function;
 };
 
 export default function TextInputEditor(props: TTextEditorProps) {
-  const { htmlFor, defaultValue, saveFn, title } = props;
+  const { htmlFor, defaultValue, saveFn, title, validationFn } = props;
   const [text, setText] = useState<string>(defaultValue);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -21,7 +22,16 @@ export default function TextInputEditor(props: TTextEditorProps) {
     }
     setText(defaultValue);
   };
-
+  const handleKeyUp = (event: React.KeyboardEvent) => {
+    if (event.key !== 'Enter') return;
+    if (validationFn) {
+      const res = validationFn(text);
+      if (!res.passed) return alert(res.error);
+    }
+    saveValue();
+    const _switch = document.getElementById(htmlFor) as HTMLInputElement;
+    _switch.checked = false;
+  };
   return (
     <>
       <input type="checkbox" id={htmlFor} className="modal-toggle" />
@@ -40,6 +50,7 @@ export default function TextInputEditor(props: TTextEditorProps) {
               onChange={(e) => {
                 setText(e.target.value.trim());
               }}
+              onKeyUp={handleKeyUp}
               className="text-white p-4 text-lg text-center"
               defaultValue={defaultValue}
             />

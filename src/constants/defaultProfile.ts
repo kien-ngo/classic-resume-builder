@@ -27,7 +27,7 @@ export const DEFAULT_PROFILE: TResumeProfile = {
           link: 'https://company3.com',
           name: 'Company No. 3',
           duration: 'May 2022 - Current',
-          location: 'Melbourne, Australia',
+          location: '',
           title: 'Front End Developer (Contractor)',
           highlights: [
             'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam deserunt doloremque, corporis praesentium maxime tenetur ab voluptate eius aut ad eos reiciendis molestias, voluptas perspiciatis labore! Sint dolores minus voluptates. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam deserunt doloremque, corporis praesentium maxime tenetur ab voluptate eius aut ad eos reicore! Sint dolores minus voluptates.',
