@@ -9,21 +9,31 @@ import ExternalLink from '@src/components/resume/ExternalLink';
 import Section from '@src/components/resume/Section';
 
 const HomePage: NextPage = () => {
+  const downloadJsonBackup = () => {
+    const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(DEFAULT_PROFILE));
+    const dlAnchorElem = document.getElementById('downloadResumeBackupData') as HTMLAnchorElement;
+    dlAnchorElem.setAttribute('href', dataStr);
+    dlAnchorElem.setAttribute('download', 'resume_backup.json');
+    dlAnchorElem.click();
+  };
   return (
-    <div className="flex flex-col">
-      <div className="h-10 w-[100vw] bg-indigo-700 flex flex-row justify-end px-6">
-        <button className="hover:border hover:border-white px-2 py-1 border border-transparent duration-150 h-fit my-auto rounded-lg ml-4">
+    <div className="flex flex-col pt-7">
+      <div className="h-10 bg-indigo-700 flex flex-row justify-end px-6 fixed top-0 w-full z-10">
+        {/* <button className="hover:border hover:border-white px-2 py-1 border border-transparent duration-150 h-fit my-auto rounded-lg ml-4">
           Download
-        </button>
-        <button className="hover:border hover:border-white px-2 py-1 border border-transparent duration-150 h-fit my-auto rounded-lg ml-4">
+        </button> */}
+        <button
+          onClick={downloadJsonBackup}
+          className="hover:border hover:border-white px-2 py-1 border border-transparent duration-150 h-fit my-auto rounded-lg ml-4"
+        >
           Backup
         </button>
-        <button className="hover:border hover:border-white px-2 py-1 border border-transparent duration-150 h-fit my-auto rounded-lg ml-4">
+        {/* <button className="hover:border hover:border-white px-2 py-1 border border-transparent duration-150 h-fit my-auto rounded-lg ml-4">
           Preview
         </button>
         <button className="hover:border hover:border-white px-2 py-1 border border-transparent duration-150 h-fit my-auto rounded-lg ml-4">
           Print
-        </button>
+        </button> */}
       </div>
       <div className="overflow-y-auto mx-auto flex mt-5">
         {/* This is the A4 Paper content */}
@@ -53,6 +63,7 @@ const HomePage: NextPage = () => {
           </div>
         </div>
       </div>
+      <a href="" id="downloadResumeBackupData" className="hidden"></a>
     </div>
   );
 };
