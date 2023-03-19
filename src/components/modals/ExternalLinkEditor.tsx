@@ -12,17 +12,14 @@ export default function ExternalLinkEditor(props: TExternalLinkEditorProps) {
   const { htmlFor, defaultValue, title } = props;
   const inputDisplayTextRef = useRef<HTMLInputElement>(null);
   const inputLinkRef = useRef<HTMLInputElement>(null);
-  const linkName = useRef<string>(defaultValue.displayText);
-  const linkUrl = useRef<string>(defaultValue.link);
   const [externalLinks, setExternalLinks] = useAtom(extraLinksAtom);
-
   const validateItem = (url: string): boolean => {
     return true;
   };
   const saveValue = () => {
     const linkObj: TExtraLink = {
-      displayText: linkName.current,
-      link: linkUrl.current,
+      displayText: inputDisplayTextRef.current?.value.trim() ?? '',
+      link: inputLinkRef.current?.value.trim() ?? '',
     };
     const index = externalLinks.findIndex((o) => o.link === defaultValue.link);
     if (index === -1) return alert('Oops not found index');
@@ -59,21 +56,11 @@ export default function ExternalLinkEditor(props: TExternalLinkEditorProps) {
                 ref={inputDisplayTextRef}
                 className="text-white p-4 text-base w-full"
                 defaultValue={defaultValue.displayText}
-                onChange={(e) => {
-                  linkName.current = e.target.value.trim();
-                }}
               />
             </div>
             <div className="flex flex-row justify-start mt-3">
               <label className="text-white my-auto mr-3 w-[90px] text-right">URL</label>
-              <input
-                ref={inputLinkRef}
-                className="text-white p-4 w-full"
-                defaultValue={defaultValue.link}
-                onChange={(e) => {
-                  linkUrl.current = e.target.value.trim();
-                }}
-              />
+              <input ref={inputLinkRef} className="text-white p-4 w-full" defaultValue={defaultValue.link} />
             </div>
             <div className="flex flex-row flex-wrap justify-between w-[250px] mx-auto mt-5">
               <label htmlFor={htmlFor} className="btn btn-success" onClick={saveValue}>

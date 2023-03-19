@@ -12,7 +12,6 @@ type TTextEditorProps = {
 
 export default function TextareaEditor(props: TTextEditorProps) {
   const { htmlFor, defaultValue, textareaCols, textareaRows, saveFn, title, isOptional } = props;
-  const text = useRef<string>(defaultValue);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const resetValue = () => {
@@ -45,9 +44,6 @@ export default function TextareaEditor(props: TTextEditorProps) {
           <div className="flex flex-col mt-8">
             <textarea
               ref={inputRef}
-              onChange={(e) => {
-                text.current = e.target.value.trim();
-              }}
               className="text-white p-4 text-base"
               cols={textareaCols}
               rows={textareaRows}
@@ -59,7 +55,11 @@ export default function TextareaEditor(props: TTextEditorProps) {
               </button>
             )}
             <div className="flex flex-row flex-wrap justify-between w-[250px] mx-auto mt-5">
-              <label htmlFor={htmlFor} className="btn btn-success" onClick={saveFn(text.current)}>
+              <label
+                htmlFor={htmlFor}
+                className="btn btn-success"
+                onClick={() => saveFn(inputRef.current?.value ?? '')}
+              >
                 Save
               </label>
               <button className="btn btn-warning" onClick={resetValue}>
