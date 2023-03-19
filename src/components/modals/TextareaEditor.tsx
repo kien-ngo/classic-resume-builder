@@ -7,10 +7,11 @@ type TTextEditorProps = {
   textareaRows: number;
   saveFn: Function;
   title?: string;
+  isOptional?: boolean
 };
 
 export default function TextareaEditor(props: TTextEditorProps) {
-  const { htmlFor, defaultValue, textareaCols, textareaRows, saveFn, title } = props;
+  const { htmlFor, defaultValue, textareaCols, textareaRows, saveFn, title, isOptional } = props;
   const [text, setText] = useState<string>(defaultValue);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
@@ -23,7 +24,14 @@ export default function TextareaEditor(props: TTextEditorProps) {
     }
     setText(defaultValue);
   };
-
+  const closePopup = () => {
+    const _switch = document.getElementById(htmlFor) as HTMLInputElement;
+    _switch.checked = false;
+  };
+  const deleteItem = () => {
+    saveFn('');
+    closePopup();
+  };
   return (
     <>
       <input type="checkbox" id={htmlFor} className="modal-toggle" />
@@ -47,6 +55,11 @@ export default function TextareaEditor(props: TTextEditorProps) {
               rows={textareaRows}
               defaultValue={defaultValue}
             ></textarea>
+            {isOptional && (
+              <button className="text-red-600 mt-2 hover:underline" onClick={deleteItem}>
+                [DELETE THIS ITEM]
+              </button>
+            )}
             <div className="flex flex-row flex-wrap justify-between w-[250px] mx-auto mt-5">
               <label htmlFor={htmlFor} className="btn btn-success" onClick={saveValue}>
                 Save

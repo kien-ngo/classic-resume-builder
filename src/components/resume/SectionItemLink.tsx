@@ -7,9 +7,9 @@ export default function SectionItemLink({ defaultValue, htmlFor }: { defaultValu
   return (
     <>
       <label htmlFor={htmlFor} className={`${classHoverHighlight} text-blue-600 w-fit text-10pt font-bold`}>
-        {value ?? '[Add a link]'}
+        {value ? value : '[Add a link]'}
       </label>
-      <TextInputEditor defaultValue={value} htmlFor={htmlFor} saveFn={setValue} />
+      <TextInputEditor defaultValue={value} htmlFor={htmlFor} saveFn={setValue} isOptional={true} />
     </>
   );
 }

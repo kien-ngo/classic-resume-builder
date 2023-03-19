@@ -20,6 +20,7 @@ export default function Intro() {
         textareaRows={10}
         saveFn={setIntro}
         title="Update intro"
+        isOptional={true}
       />
     </>
   );

@@ -32,7 +32,7 @@ const HomePage: NextPage = () => {
         {/* This is the A4 Paper content */}
         <div className="w-[210mm] min-h-[297mm] py-[2cm] px-[1cm] m-auto bg-slate-100 text-black flex flex-col relative">
           <span className="text-red-500 absolute top-0 left-0">
-            [This is not the final design of your resume. It&apos;s just here 4u to fill up the info]
+            [This is not the final design of your resume. It&apos;s here 4u to fill up the info]
           </span>
           <Name />
           <div className="text-center flex flex-col text-11pt">
