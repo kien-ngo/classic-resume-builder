@@ -65,7 +65,7 @@ export default function TextInputEditor(props: TTextEditorProps) {
               </button>
             )}
             <div className="flex flex-row flex-wrap justify-between w-[250px] mx-auto mt-5">
-              <label htmlFor={htmlFor} className="btn btn-success" onClick={saveFn(text.current)}>
+              <label htmlFor={htmlFor} className="btn btn-success" onClick={() => saveFn(text.current)}>
                 Save
               </label>
               <button className="btn btn-warning" onClick={resetValue}>

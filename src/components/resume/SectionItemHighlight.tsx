@@ -9,7 +9,14 @@ export default function SectionItemHighlight({ defaultValue, htmlFor }: { defaul
       <label htmlFor={htmlFor}>
         <div className={`${classHoverHighlight}`}>{value ?? '[Add some highlights]'}</div>
       </label>
-      <TextareaEditor defaultValue={value} htmlFor={htmlFor} saveFn={setValue} textareaCols={30} textareaRows={10} />
+      <TextareaEditor
+        defaultValue={value}
+        htmlFor={htmlFor}
+        saveFn={setValue}
+        textareaCols={30}
+        textareaRows={10}
+        isOptional={true}
+      />
     </>
   );
 }
