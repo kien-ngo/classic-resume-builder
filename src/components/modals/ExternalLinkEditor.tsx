@@ -1,18 +1,20 @@
+import { extraLinksAtom } from '@src/store/jotai';
 import { TExtraLink } from '@src/types/resume';
-import { useRef, useState } from 'react';
+import { useAtom } from 'jotai';
+import { useRef } from 'react';
 
 type TExternalLinkEditorProps = {
   htmlFor: string;
   defaultValue: TExtraLink;
-  saveFn: Function;
   title?: string;
 };
 export default function ExternalLinkEditor(props: TExternalLinkEditorProps) {
-  const { htmlFor, defaultValue, saveFn, title } = props;
+  const { htmlFor, defaultValue, title } = props;
   const inputDisplayTextRef = useRef<HTMLInputElement>(null);
   const inputLinkRef = useRef<HTMLInputElement>(null);
   const linkName = useRef<string>(defaultValue.displayText);
   const linkUrl = useRef<string>(defaultValue.link);
+  const [externalLinks, setExternalLinks] = useAtom(extraLinksAtom);
 
   const validateItem = (url: string): boolean => {
     return true;
@@ -22,7 +24,13 @@ export default function ExternalLinkEditor(props: TExternalLinkEditorProps) {
       displayText: linkName.current,
       link: linkUrl.current,
     };
-    saveFn(linkObj);
+    const index = externalLinks.findIndex((o) => o.link === defaultValue.link);
+    if (index === -1) return alert('Oops not found index');
+    const newLinks = externalLinks.map((o, _index) => {
+      if (index !== _index) return o;
+      return linkObj;
+    });
+    setExternalLinks(newLinks);
   };
   const resetValue = () => {
     if (inputDisplayTextRef.current) {

@@ -25,7 +25,7 @@ export default function ExternalLinksContainer() {
           {index !== externalLinks.length - 1 ? <span>|</span> : <></>}
         </Fragment>
       ))}
-      <label htmlFor="AddExtraLink" className="hover:underline hover:font-bold">
+      <label htmlFor="AddExtraLink" className="hover:underline hover:font-bold cursor-pointer">
         [+ Add link]
       </label>
       <input type="checkbox" id="AddExtraLink" className="modal-toggle" />
