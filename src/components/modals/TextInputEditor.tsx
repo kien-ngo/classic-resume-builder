@@ -11,18 +11,14 @@ type TTextEditorProps = {
 
 export default function TextInputEditor(props: TTextEditorProps) {
   const { htmlFor, defaultValue, saveFn, title, validationFn, isOptional } = props;
-  const [text, setText] = useState<string>(defaultValue);
+  const text = useRef<string>(defaultValue);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const saveValue = () => {
-    saveFn(text);
-    closePopup();
-  };
   const resetValue = () => {
     if (inputRef.current) {
       inputRef.current.value = defaultValue;
     }
-    setText(defaultValue);
+    if (inputRef.current) inputRef.current.value = defaultValue;
   };
   const closePopup = () => {
     const _switch = document.getElementById(htmlFor) as HTMLInputElement;
@@ -34,7 +30,8 @@ export default function TextInputEditor(props: TTextEditorProps) {
       const res = validationFn(text);
       if (!res.passed) return alert(res.error);
     }
-    saveValue();
+    saveFn(text.current);
+    closePopup();
   };
   const deleteItem = () => {
     saveFn('');
@@ -56,7 +53,7 @@ export default function TextInputEditor(props: TTextEditorProps) {
             <input
               ref={inputRef}
               onChange={(e) => {
-                setText(e.target.value.trim());
+                text.current = e.target.value.trim();
               }}
               onKeyUp={handleKeyUp}
               className="text-white p-4 text-lg text-center"
@@ -68,7 +65,7 @@ export default function TextInputEditor(props: TTextEditorProps) {
               </button>
             )}
             <div className="flex flex-row flex-wrap justify-between w-[250px] mx-auto mt-5">
-              <label htmlFor={htmlFor} className="btn btn-success" onClick={saveValue}>
+              <label htmlFor={htmlFor} className="btn btn-success" onClick={saveFn(text.current)}>
                 Save
               </label>
               <button className="btn btn-warning" onClick={resetValue}>

@@ -9,13 +9,19 @@ type TExternalLinkEditorProps = {
 };
 export default function ExternalLinkEditor(props: TExternalLinkEditorProps) {
   const { htmlFor, defaultValue, saveFn, title } = props;
-  const [linkObj, setLinkObj] = useState<TExtraLink>(defaultValue);
   const inputDisplayTextRef = useRef<HTMLInputElement>(null);
   const inputLinkRef = useRef<HTMLInputElement>(null);
+  const linkName = useRef<string>(defaultValue.displayText);
+  const linkUrl = useRef<string>(defaultValue.link);
+
   const validateItem = (url: string): boolean => {
     return true;
   };
   const saveValue = () => {
+    const linkObj: TExtraLink = {
+      displayText: linkName.current,
+      link: linkUrl.current,
+    };
     saveFn(linkObj);
   };
   const resetValue = () => {
@@ -25,7 +31,6 @@ export default function ExternalLinkEditor(props: TExternalLinkEditorProps) {
     if (inputLinkRef.current) {
       inputLinkRef.current.value = defaultValue.link;
     }
-    setLinkObj(defaultValue);
   };
   return (
     <>
@@ -47,7 +52,7 @@ export default function ExternalLinkEditor(props: TExternalLinkEditorProps) {
                 className="text-white p-4 text-base w-full"
                 defaultValue={defaultValue.displayText}
                 onChange={(e) => {
-                  setLinkObj({ displayText: e.target.value.trim(), link: linkObj.link });
+                  linkName.current = e.target.value.trim();
                 }}
               />
             </div>
@@ -58,7 +63,7 @@ export default function ExternalLinkEditor(props: TExternalLinkEditorProps) {
                 className="text-white p-4 w-full"
                 defaultValue={defaultValue.link}
                 onChange={(e) => {
-                  setLinkObj({ displayText: linkObj.displayText, link: e.target.value.trim() });
+                  linkUrl.current = e.target.value.trim();
                 }}
               />
             </div>

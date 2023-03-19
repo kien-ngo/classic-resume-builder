@@ -7,27 +7,25 @@ type TTextEditorProps = {
   textareaRows: number;
   saveFn: Function;
   title?: string;
-  isOptional?: boolean
+  isOptional?: boolean;
 };
 
 export default function TextareaEditor(props: TTextEditorProps) {
   const { htmlFor, defaultValue, textareaCols, textareaRows, saveFn, title, isOptional } = props;
-  const [text, setText] = useState<string>(defaultValue);
+  const text = useRef<string>(defaultValue);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
-  const saveValue = () => {
-    saveFn(text);
-  };
   const resetValue = () => {
     if (inputRef.current) {
       inputRef.current.value = defaultValue;
     }
-    setText(defaultValue);
   };
+
   const closePopup = () => {
     const _switch = document.getElementById(htmlFor) as HTMLInputElement;
     _switch.checked = false;
   };
+
   const deleteItem = () => {
     saveFn('');
     closePopup();
@@ -48,7 +46,7 @@ export default function TextareaEditor(props: TTextEditorProps) {
             <textarea
               ref={inputRef}
               onChange={(e) => {
-                setText(e.target.value.trim());
+                text.current = e.target.value.trim();
               }}
               className="text-white p-4 text-base"
               cols={textareaCols}
@@ -61,7 +59,7 @@ export default function TextareaEditor(props: TTextEditorProps) {
               </button>
             )}
             <div className="flex flex-row flex-wrap justify-between w-[250px] mx-auto mt-5">
-              <label htmlFor={htmlFor} className="btn btn-success" onClick={saveValue}>
+              <label htmlFor={htmlFor} className="btn btn-success" onClick={saveFn(text.current)}>
                 Save
               </label>
               <button className="btn btn-warning" onClick={resetValue}>
