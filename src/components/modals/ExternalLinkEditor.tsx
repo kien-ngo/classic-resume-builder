@@ -31,7 +31,7 @@ export default function ExternalLinkEditor(props: TExternalLinkEditorProps) {
     <>
       <input type="checkbox" id={htmlFor} className="modal-toggle" />
       <div className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box w-full lg:w-[380px] flex flex-col">
+        <div className="modal-box w-full lg:w-[700px] md:w-[500px] flex flex-col">
           <div className="w-full top-0 right-0 flex flex-row justify-between">
             <span></span>
             <span className="my-auto pl-8 text-white">{title ? title : 'Edit link'}</span>
