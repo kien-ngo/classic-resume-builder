@@ -1,4 +1,3 @@
-import { TSecuredUrl } from '@src/types/auth';
 import { TExtraLink } from '@src/types/resume';
 import { useRef, useState } from 'react';
 
@@ -59,7 +58,7 @@ export default function ExternalLinkEditor(props: TExternalLinkEditorProps) {
                 className="text-white p-4 w-full"
                 defaultValue={defaultValue.link}
                 onChange={(e) => {
-                  setLinkObj({ displayText: linkObj.displayText, link: e.target.value.trim() as TSecuredUrl });
+                  setLinkObj({ displayText: linkObj.displayText, link: e.target.value.trim() });
                 }}
               />
             </div>

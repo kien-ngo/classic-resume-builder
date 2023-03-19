@@ -1,15 +1,13 @@
-import { TEmail, TSecuredUrl } from './auth';
-
 export type TExtraLink = {
   displayText: string;
-  link: TSecuredUrl;
+  link: string;
 };
 export type TSection = {
   displayText: string;
   items: TSectionItem[];
 };
 export type TSectionItem = {
-  link: TSecuredUrl | null;
+  link: string | null;
   name: string;
   duration: string;
   location: string;
@@ -19,7 +17,7 @@ export type TSectionItem = {
 export type TProfileContact = {
   address: string;
   phone: string;
-  email: TEmail;
+  email: string;
 };
 export type TResumeProfile = {
   name: string;
