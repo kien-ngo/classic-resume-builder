@@ -8,7 +8,7 @@ export default function SectionTitle({ defaultValue, index }: { defaultValue: st
 
   return (
     <>
-      <label htmlFor={htmlFor} className={`${classHoverHighlight} mb-[4px] uppercase text-left text-16pt w-fit`}>
+      <label htmlFor={htmlFor} className={`${classHoverHighlight} mb-[4px] mt-5 uppercase text-left text-3xl w-fit`}>
         {value}
       </label>
       <TextInputEditor htmlFor={htmlFor} defaultValue={value} saveFn={setValue} />

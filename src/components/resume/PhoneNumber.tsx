@@ -8,9 +8,15 @@ export default function PhoneNumber() {
   return (
     <>
       <label className={`w-fit mx-auto ${classHoverHighlight}`} htmlFor="PhoneNumberEdit">
-        {phone}
+        {phone ? phone : '[Add phone number]'}
       </label>
-      <TextInputEditor htmlFor="PhoneNumberEdit" defaultValue={phone} saveFn={setPhone} title="Update phone number" />
+      <TextInputEditor
+        htmlFor="PhoneNumberEdit"
+        defaultValue={phone}
+        saveFn={setPhone}
+        title="Update phone number"
+        isOptional={true}
+      />
     </>
   );
 }

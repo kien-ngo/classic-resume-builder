@@ -7,7 +7,7 @@ export type TSection = {
   items: TSectionItem[];
 };
 export type TSectionItem = {
-  link: string | null;
+  link: string;
   name: string;
   duration: string;
   location: string;

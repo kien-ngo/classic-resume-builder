@@ -10,9 +10,15 @@ export default function Address() {
   return (
     <>
       <label className={`w-fit mx-auto ${classHoverHighlight}`} htmlFor="AddressEdit">
-        {address}
+        {address ? address : '[Add an address]'}
       </label>
-      <TextInputEditor htmlFor="AddressEdit" defaultValue={address} saveFn={setAddress} title="Update address" />
+      <TextInputEditor
+        htmlFor="AddressEdit"
+        defaultValue={address}
+        saveFn={setAddress}
+        title="Update address"
+        isOptional={true}
+      />
     </>
   );
 }

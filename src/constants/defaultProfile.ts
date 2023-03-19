@@ -86,7 +86,7 @@ export const DEFAULT_PROFILE: TResumeProfile = {
       displayText: 'Education',
       items: [
         {
-          link: null,
+          link: '',
           name: 'SOME OVERRATED COLLEGE',
           duration: '2017 - 2019 (3 years)',
           location: 'Toronto, ON',
@@ -96,7 +96,7 @@ export const DEFAULT_PROFILE: TResumeProfile = {
           ],
         },
         {
-          link: null,
+          link: '',
           name: 'Some good highschool',
           duration: '2013 - 2016 (3 years)',
           location: 'Vung Tau, Viet Nam',
