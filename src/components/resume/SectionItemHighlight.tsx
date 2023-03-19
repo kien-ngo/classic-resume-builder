@@ -1,10 +1,8 @@
 import { classHoverHighlight } from '@src/constants/tailwind';
 import { useState } from 'react';
 import TextareaEditor from '../modals/TextareaEditor';
-import TextInputEditor from '../modals/TextInputEditor';
 
-export default function SectionItemHighlight({ defaultValue, index }: { defaultValue: string; index: number }) {
-  const htmlFor: string = `sectionItemHighlight_${index}`;
+export default function SectionItemHighlight({ defaultValue, htmlFor }: { defaultValue: string; htmlFor: string }) {
   const [value, setValue] = useState<string>(defaultValue);
   return (
     <>

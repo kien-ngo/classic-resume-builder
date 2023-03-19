@@ -1,10 +1,10 @@
-import { DEFAULT_PROFILE } from '@src/constants/defaultProfile';
 import { classHoverHighlight } from '@src/constants/tailwind';
-import { useState } from 'react';
+import { phoneNumberAtom } from '@src/store/jotai';
+import { useAtom } from 'jotai';
 import TextInputEditor from '../modals/TextInputEditor';
 
 export default function PhoneNumber() {
-  const [phone, setPhone] = useState<string>(DEFAULT_PROFILE.contact.phone);
+  const [phone, setPhone] = useAtom(phoneNumberAtom);
   return (
     <>
       <label className={`w-fit mx-auto ${classHoverHighlight}`} htmlFor="PhoneNumberEdit">

@@ -1,10 +1,10 @@
-import { DEFAULT_PROFILE } from '@src/constants/defaultProfile';
 import { classHoverHighlight } from '@src/constants/tailwind';
-import { useState } from 'react';
+import { introAtom } from '@src/store/jotai';
+import { useAtom } from 'jotai';
 import TextareaEditor from '../modals/TextareaEditor';
 
 export default function Intro() {
-  const [intro, setIntro] = useState<string>(DEFAULT_PROFILE.intro);
+  const [intro, setIntro] = useAtom(introAtom);
   return (
     <>
       <label

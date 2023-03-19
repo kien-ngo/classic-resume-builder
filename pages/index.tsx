@@ -7,10 +7,36 @@ import Email from '@src/components/resume/Email';
 import Intro from '@src/components/resume/Intro';
 import ExternalLink from '@src/components/resume/ExternalLink';
 import Section from '@src/components/resume/Section';
+import { TResumeProfile } from '@src/types/resume';
+import { useAtom } from 'jotai/react';
+import {
+  contactAddressAtom,
+  emailAtom,
+  extraLinksAtom,
+  introAtom,
+  nameAtom,
+  phoneNumberAtom,
+  sectionsAtom,
+} from '@src/store/jotai';
 
 const HomePage: NextPage = () => {
+  const [name] = useAtom(nameAtom);
+  const [intro] = useAtom(introAtom);
+  const [email] = useAtom(emailAtom);
+  const [phone] = useAtom(phoneNumberAtom);
+  const [address] = useAtom(contactAddressAtom);
+  const [extraLinks] = useAtom(extraLinksAtom);
+  const [sections] = useAtom(sectionsAtom);
+
   const downloadJsonBackup = () => {
-    const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(DEFAULT_PROFILE));
+    const profileData: TResumeProfile = {
+      name,
+      intro,
+      contact: { email, address, phone },
+      extraLinks,
+      sections,
+    };
+    const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(profileData));
     const dlAnchorElem = document.getElementById('downloadResumeBackupData') as HTMLAnchorElement;
     dlAnchorElem.setAttribute('href', dataStr);
     dlAnchorElem.setAttribute('download', 'resume_backup.json');

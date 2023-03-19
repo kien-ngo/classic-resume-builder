@@ -2,8 +2,7 @@ import { classHoverHighlight } from '@src/constants/tailwind';
 import { useState } from 'react';
 import TextInputEditor from '../modals/TextInputEditor';
 
-export default function SectionItemLocation({ defaultValue, index }: { defaultValue: string; index: number }) {
-  const htmlFor: string = `sectionItemLocation_${index}`;
+export default function SectionItemLocation({ defaultValue, htmlFor }: { defaultValue: string; htmlFor: string }) {
   const [value, setValue] = useState<string>(defaultValue);
   return (
     <>

@@ -1,10 +1,10 @@
-import { DEFAULT_PROFILE } from '@src/constants/defaultProfile';
 import { classHoverHighlight } from '@src/constants/tailwind';
-import { useState } from 'react';
+import { nameAtom } from '@src/store/jotai';
+import { useAtom } from 'jotai';
 import TextInputEditor from '../modals/TextInputEditor';
 
 export default function Name() {
-  const [name, setName] = useState<string>(DEFAULT_PROFILE.name);
+  const [name, setName] = useAtom(nameAtom);
   return (
     <>
       <label className={`w-fit mx-auto text-center mt-0 text-32pt ${classHoverHighlight}`} htmlFor="NameEdit">
