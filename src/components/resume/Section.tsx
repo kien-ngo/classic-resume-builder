@@ -44,7 +44,7 @@ export default function Section(props: TSectionProps) {
                   {highlight && (
                     <li
                       className={`text-10pt ml-3 text-left list-disc ${
-                        i < subItem.highlights.length - 1 ? 'mb-3' : ''
+                        i < subItem.highlights.length - 1 ? 'mb-2' : ''
                       }`}
                     >
                       <SectionItemHighlight index={mainIndex} subIndex={index} subsubIndex={i} />
