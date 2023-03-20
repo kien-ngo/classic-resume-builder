@@ -7,8 +7,11 @@ export default function PhoneNumber() {
   const [phone, setPhone] = useAtom(phoneNumberAtom);
   return (
     <>
-      <label className={`w-fit mx-auto ${classHoverHighlight}`} htmlFor="PhoneNumberEdit">
-        {phone ? phone : '[+Add phone number]'}
+      <label
+        className={`w-fit mx-auto ${classHoverHighlight} ${!phone ? 'text-orange-600 font-bold' : ''}`}
+        htmlFor="PhoneNumberEdit"
+      >
+        {phone ? phone : '[+ Add phone number]'}
       </label>
       <TextInputEditor
         htmlFor="PhoneNumberEdit"

@@ -7,8 +7,11 @@ export default function Address() {
   const [address, setAddress] = useAtom(contactAddressAtom);
   return (
     <>
-      <label className={`w-fit mx-auto ${classHoverHighlight}`} htmlFor="AddressEdit">
-        {address ? address : '[+Add an address]'}
+      <label
+        className={`w-fit mx-auto ${classHoverHighlight} ${!address ? 'text-orange-600 font-bold' : ''}`}
+        htmlFor="AddressEdit"
+      >
+        {address ? address : '[+ Add an address]'}
       </label>
       <TextInputEditor
         htmlFor="AddressEdit"

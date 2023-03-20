@@ -7,10 +7,19 @@ export default function Email() {
   const [email, setEmail] = useAtom(emailAtom);
   return (
     <>
-      <label className={`w-fit mx-auto ${classHoverHighlight}`} htmlFor="EmailEdit">
-        {email ? email : '[+Add email]'}
+      <label
+        className={`w-fit mx-auto ${classHoverHighlight} ${!email ? 'text-orange-600 font-bold' : ''}`}
+        htmlFor="EmailEdit"
+      >
+        {email ? email : '[+ Add email]'}
       </label>
-      <TextInputEditor htmlFor="EmailEdit" defaultValue={email} saveFn={setEmail} title="Update email" />
+      <TextInputEditor
+        htmlFor="EmailEdit"
+        defaultValue={email}
+        saveFn={setEmail}
+        title="Update email"
+        isOptional={true}
+      />
     </>
   );
 }

@@ -13,8 +13,8 @@ export default function SectionItemRole({ index, subIndex }: { index: number; su
   };
   return (
     <>
-      <label htmlFor={htmlFor} className={`${classHoverHighlight}`}>
-        {item.title ? item.title : '[+Add a role/title]'}
+      <label htmlFor={htmlFor} className={`${classHoverHighlight} ${!item.title ? 'text-orange-600' : ''}`}>
+        {item.title ? item.title : '[+ Add a role/title]'}
       </label>
       <TextInputEditor defaultValue={item.title} htmlFor={htmlFor} saveFn={updateSectionRole} title="Edit role" />
     </>

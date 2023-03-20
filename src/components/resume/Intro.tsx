@@ -8,10 +8,12 @@ export default function Intro() {
   return (
     <>
       <label
-        className={`${classHoverHighlight} py-3 text-10pt border-t border-1 border-light-black`}
+        className={`${classHoverHighlight} py-3 text-10pt border-t border-1 border-light-black ${
+          !intro ? 'text-orange-600 font-bold' : ''
+        }`}
         htmlFor="IntroEdit"
       >
-        {intro ? intro : '[+Add your introduction]'}
+        {intro ? intro : '[+ Add your introduction]'}
       </label>
       <TextareaEditor
         htmlFor="IntroEdit"

@@ -7,10 +7,15 @@ export default function Name() {
   const [name, setName] = useAtom(nameAtom);
   return (
     <>
-      <label className={`w-fit mx-auto text-center mt-0 text-32pt ${classHoverHighlight}`} htmlFor="NameEdit">
-        {name}
+      <label
+        className={`w-fit mx-auto text-center mt-0 text-32pt ${classHoverHighlight} ${
+          !name ? 'text-orange-600 font-bold' : ''
+        }`}
+        htmlFor="NameEdit"
+      >
+        {name ? name : '[+ Add your name]'}
       </label>
-      <TextInputEditor htmlFor="NameEdit" defaultValue={name} saveFn={setName} title="Update name" />
+      <TextInputEditor htmlFor="NameEdit" defaultValue={name} saveFn={setName} title="Update name" isOptional={true} />
     </>
   );
 }
