@@ -46,7 +46,7 @@ export default function Section(props: TSectionProps) {
             </ul>
           )}
           <button
-            className="hover:underline hover:font-bold mt-3"
+            className="hover:underline font-bold mt-3 text-orange-600"
             onClick={() => {
               alert('Coming soon');
             }}

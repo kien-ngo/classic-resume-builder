@@ -14,7 +14,7 @@ export default function SectionItemDuration({ index, subIndex }: { index: number
   return (
     <>
       <label htmlFor={htmlFor} className={`${classHoverHighlight}`}>
-        {item.duration ? item.duration : '[Add duration]'}
+        {item.duration ? item.duration : '[+Add duration]'}
       </label>
       <TextInputEditor
         defaultValue={item.duration}

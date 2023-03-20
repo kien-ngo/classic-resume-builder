@@ -8,7 +8,7 @@ export default function Address() {
   return (
     <>
       <label className={`w-fit mx-auto ${classHoverHighlight}`} htmlFor="AddressEdit">
-        {address ? address : '[Add an address]'}
+        {address ? address : '[+Add an address]'}
       </label>
       <TextInputEditor
         htmlFor="AddressEdit"

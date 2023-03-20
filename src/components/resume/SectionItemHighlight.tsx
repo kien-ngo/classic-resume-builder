@@ -24,7 +24,7 @@ export default function SectionItemHighlight({
   return (
     <>
       <label htmlFor={htmlFor}>
-        <div className={`${classHoverHighlight}`}>{highlightItem ?? '[Add some highlights]'}</div>
+        <div className={`${classHoverHighlight}`}>{highlightItem ?? '[+Add some highlights]'}</div>
       </label>
       <TextareaEditor
         defaultValue={highlightItem}

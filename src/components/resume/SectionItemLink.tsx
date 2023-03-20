@@ -13,8 +13,13 @@ export default function SectionItemLink({ index, subIndex }: { index: number; su
   };
   return (
     <>
-      <label htmlFor={htmlFor} className={`${classHoverHighlight} text-blue-600 w-fit text-10pt font-bold`}>
-        {item.link ? item.link : '[Add a link]'}
+      <label
+        htmlFor={htmlFor}
+        className={`${classHoverHighlight} text-blue-600 w-fit text-10pt font-bold ${
+          !item.link ? 'text-orange-600' : ''
+        }`}
+      >
+        {item.link ? item.link : '[+ Add a link]'}
       </label>
       <TextInputEditor defaultValue={item.link} htmlFor={htmlFor} saveFn={updateSectionLink} isOptional={true} />
     </>

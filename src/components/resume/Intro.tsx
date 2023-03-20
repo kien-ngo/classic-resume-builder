@@ -11,7 +11,7 @@ export default function Intro() {
         className={`${classHoverHighlight} py-3 text-10pt border-t border-1 border-light-black`}
         htmlFor="IntroEdit"
       >
-        {intro ? intro : '[Add your introduction]'}
+        {intro ? intro : '[+Add your introduction]'}
       </label>
       <TextareaEditor
         htmlFor="IntroEdit"

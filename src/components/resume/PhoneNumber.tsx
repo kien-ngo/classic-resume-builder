@@ -8,7 +8,7 @@ export default function PhoneNumber() {
   return (
     <>
       <label className={`w-fit mx-auto ${classHoverHighlight}`} htmlFor="PhoneNumberEdit">
-        {phone ? phone : '[Add phone number]'}
+        {phone ? phone : '[+Add phone number]'}
       </label>
       <TextInputEditor
         htmlFor="PhoneNumberEdit"

@@ -14,7 +14,7 @@ export default function ExternalLinksContainer() {
   };
   const addLink = () => {
     const link: TExtraLink = { link: inputLinkRef.current!.value, displayText: inputDisplayTextRef.current!.value };
-    const newLinks:TExtraLink[] = externalLinks.concat(link);
+    const newLinks: TExtraLink[] = externalLinks.concat(link);
     setExternalLinks(newLinks);
   };
   return (
@@ -25,7 +25,7 @@ export default function ExternalLinksContainer() {
           {index !== externalLinks.length - 1 ? <span>|</span> : <></>}
         </Fragment>
       ))}
-      <label htmlFor="AddExtraLink" className="hover:underline hover:font-bold cursor-pointer">
+      <label htmlFor="AddExtraLink" className="hover:underline font-bold cursor-pointer text-orange-600">
         [+ Add link]
       </label>
       <input type="checkbox" id="AddExtraLink" className="modal-toggle" />

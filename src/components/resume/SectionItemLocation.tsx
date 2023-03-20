@@ -13,8 +13,8 @@ export default function SectionItemLocation({ index, subIndex }: { index: number
   };
   return (
     <>
-      <label htmlFor={htmlFor} className={`${classHoverHighlight}`}>
-        {item.location ? item.location : '[Add location]'}
+      <label htmlFor={htmlFor} className={`${classHoverHighlight} ${!item.location ? 'text-orange-600' : ''}`}>
+        {item.location ? item.location : '[+ Add location]'}
       </label>
       <TextInputEditor
         defaultValue={item.location}
