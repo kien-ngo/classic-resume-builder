@@ -10,7 +10,10 @@ export default function DeleteSectionBtn({ index, title }: { index: number; titl
     setSections(newData);
   };
   return (
-    <button className="bg-red-500 h-fit w-fit my-auto px-2 rounded text-white ml-2" onClick={deleteSection}>
+    <button
+      className="hover:bg-red-500 text-red-500 border border-red-500 h-fit w-fit my-auto px-2 rounded hover:text-white ml-2"
+      onClick={deleteSection}
+    >
       Delete
     </button>
   );

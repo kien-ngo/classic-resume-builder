@@ -56,8 +56,8 @@ export default function TextInputEditor(props: TTextEditorProps) {
               defaultValue={defaultValue}
             />
             {isOptional && (
-              <button className="text-red-600 mt-2 hover:underline" onClick={deleteItem}>
-                [DELETE THIS ITEM]
+              <button className="text-red-500 mt-2 hover:underline" onClick={deleteItem}>
+                [ DELETE THIS ITEM ]
               </button>
             )}
             <div className="flex flex-row flex-wrap justify-between w-[250px] mx-auto mt-5">

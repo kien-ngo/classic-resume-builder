@@ -10,7 +10,10 @@ export default function MoveSectionDownBtn({ index }: { index: number }) {
     setSections([...sections]);
   };
   return (
-    <button className="bg-blue-600 h-fit w-fit my-auto px-2 rounded text-white ml-2" onClick={moveBtnDown}>
+    <button
+      className="hover:bg-blue-600 border border-blue-600 text-blue-600 h-fit w-fit my-auto px-2 rounded hover:text-white ml-2"
+      onClick={moveBtnDown}
+    >
       Move down
     </button>
   );
