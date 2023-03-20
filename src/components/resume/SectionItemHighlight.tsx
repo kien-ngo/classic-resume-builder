@@ -1,18 +1,35 @@
 import { classHoverHighlight } from '@src/constants/tailwind';
+import { sectionsAtom } from '@src/store/jotai';
+import { useAtom } from 'jotai';
 import { useState } from 'react';
 import TextareaEditor from '../modals/TextareaEditor';
 
-export default function SectionItemHighlight({ defaultValue, htmlFor }: { defaultValue: string; htmlFor: string }) {
-  const [value, setValue] = useState<string>(defaultValue);
+export default function SectionItemHighlight({
+  index,
+  subIndex,
+  subsubIndex,
+}: {
+  index: number;
+  subIndex: number;
+  subsubIndex: number;
+}) {
+  const [sections, setSections] = useAtom(sectionsAtom);
+  const item = sections[index].items[subIndex];
+  const highlightItem = item.highlights[subsubIndex];
+  const htmlFor = `sectionHighlight_${item.name}_${subIndex}_${subsubIndex}`;
+  const updateSectionHighlight = (newValue: string) => {
+    sections[index].items[subIndex].highlights[subsubIndex] = newValue;
+    setSections([...sections]);
+  };
   return (
     <>
       <label htmlFor={htmlFor}>
-        <div className={`${classHoverHighlight}`}>{value ?? '[Add some highlights]'}</div>
+        <div className={`${classHoverHighlight}`}>{highlightItem ?? '[Add some highlights]'}</div>
       </label>
       <TextareaEditor
-        defaultValue={value}
+        defaultValue={highlightItem}
         htmlFor={htmlFor}
-        saveFn={setValue}
+        saveFn={updateSectionHighlight}
         textareaCols={30}
         textareaRows={10}
         isOptional={true}

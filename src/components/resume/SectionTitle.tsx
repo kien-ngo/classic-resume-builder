@@ -7,14 +7,8 @@ export default function SectionTitle({ defaultValue, index }: { defaultValue: st
   const htmlFor: string = `sectionTitle_${index}`;
   const [sections, setSections] = useAtom(sectionsAtom);
   const updateSectionTitle = (newTitle: string) => {
-    const newSections = sections.map((item, i) => {
-      if (i !== index) return item;
-      const obj = item;
-      obj.displayText = newTitle;
-      return obj;
-    });
-    console.log({ newSections, newTitle });
-    setSections(newSections);
+    sections[index].displayText = newTitle;
+    setSections([...sections]);
   };
 
   return (

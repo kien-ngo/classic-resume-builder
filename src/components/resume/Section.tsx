@@ -20,20 +20,14 @@ export default function Section(props: TSectionProps) {
       {item.items.map((subItem, index) => (
         <div className="border-t border-light-black flex flex-col pb-5" key={subItem.name}>
           <div className="flex flex-row justify-between mt-2">
-            <SectionItemName defaultValue={subItem.name ?? ''} htmlFor={`sectionName_${subItem.name}_${index}`} />
-            <SectionItemLocation
-              defaultValue={subItem.location ?? ''}
-              htmlFor={`sectionLocation_${subItem.name}_${index}`}
-            />
+            <SectionItemName index={mainIndex} subIndex={index} />
+            <SectionItemLocation index={mainIndex} subIndex={index} />
           </div>
           <div className="flex flex-row justify-between">
-            <SectionItemRole defaultValue={subItem.title ?? ''} htmlFor={`sectionRole_${subItem.name}_${index}`} />
-            <SectionItemDuration
-              defaultValue={subItem.duration ?? ''}
-              htmlFor={`sectionDuration_${subItem.name}_${index}`}
-            />
+            <SectionItemRole index={mainIndex} subIndex={index} />
+            <SectionItemDuration index={mainIndex} subIndex={index} />
           </div>
-          <SectionItemLink defaultValue={subItem.link ?? ''} htmlFor={`sectionLink_${subItem.name}_${index}`} />
+          <SectionItemLink index={mainIndex} subIndex={index} />
           {subItem.highlights.length && (
             <ul className="pl-[6px] mt-[5px]">
               {subItem.highlights.map((highlight, i) => (
@@ -44,16 +38,21 @@ export default function Section(props: TSectionProps) {
                         i < subItem.highlights.length - 1 ? 'mb-3' : ''
                       }`}
                     >
-                      <SectionItemHighlight
-                        defaultValue={highlight}
-                        htmlFor={`sectionHighlight_${subItem.name}_${i}`}
-                      />
+                      <SectionItemHighlight index={mainIndex} subIndex={index} subsubIndex={i} />
                     </li>
                   )}
                 </Fragment>
               ))}
             </ul>
           )}
+          <button
+            className="hover:underline hover:font-bold mt-3"
+            onClick={() => {
+              alert('Coming soon');
+            }}
+          >
+            [+ Add new highlight]
+          </button>
         </div>
       ))}
     </div>

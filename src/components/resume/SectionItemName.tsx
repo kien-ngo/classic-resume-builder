@@ -1,15 +1,23 @@
 import { classHoverHighlight } from '@src/constants/tailwind';
+import { sectionsAtom } from '@src/store/jotai';
+import { useAtom } from 'jotai';
 import { useState } from 'react';
 import TextInputEditor from '../modals/TextInputEditor';
 
-export default function SectionItemName({ defaultValue, htmlFor }: { defaultValue: string; htmlFor: string }) {
-  const [value, setValue] = useState<string>(defaultValue);
+export default function SectionItemName({ index, subIndex }: { index: number; subIndex: number }) {
+  const [sections, setSections] = useAtom(sectionsAtom);
+  const item = sections[index].items[subIndex];
+  const htmlFor: string = `sectionName_${item.name}_${index}`;
+  const updateSectionName = (newName: string) => {
+    sections[index].items[subIndex].name = newName;
+    setSections([...sections]);
+  };
   return (
     <>
       <label htmlFor={htmlFor} className={`${classHoverHighlight} font-bold`}>
-        {value}
+        {item.name ? item.name : '[Add a name]'}
       </label>
-      <TextInputEditor defaultValue={value} htmlFor={htmlFor} saveFn={setValue} />
+      <TextInputEditor defaultValue={item.name} htmlFor={htmlFor} saveFn={updateSectionName} />
     </>
   );
 }
