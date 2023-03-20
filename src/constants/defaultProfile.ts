@@ -21,7 +21,7 @@ export const DEFAULT_PROFILE: TResumeProfile = {
     "Put some info about yourself here. It's okay to brag. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam deserunt doloremque, corporis praesentium maxime tenetur ab voluptate eius aut ad eos reiciendis molestias, voluptas perspiciatis labore! Sint dolores minus voluptates.",
   sections: [
     {
-      displayText: 'Professional Experience',
+      displayText: 'Work Experience',
       items: [
         {
           link: 'https://company3.com',

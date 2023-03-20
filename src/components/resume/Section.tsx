@@ -2,6 +2,8 @@ import { TSection } from '@src/types/resume';
 import { Fragment } from 'react';
 import AddHighlight from '../modals/AddHighlight';
 import DeleteSectionBtn from './DeleteSectionBtn';
+import MoveSectionDownBtn from './MoveSectionDownBtn';
+import MoveSectionUpBtn from './MoveSectionUpBtn';
 import SectionItemDuration from './SectionItemDuration';
 import SectionItemHighlight from './SectionItemHighlight';
 import SectionItemLink from './SectionItemLink';
@@ -20,6 +22,8 @@ export default function Section(props: TSectionProps) {
     <div className="flex flex-col">
       <div className="flex flex-row mb-[4px] mt-7">
         <SectionTitle defaultValue={item.displayText} index={mainIndex} />
+        <MoveSectionUpBtn index={mainIndex} />
+        <MoveSectionDownBtn index={mainIndex} />
         <DeleteSectionBtn index={mainIndex} title={item.displayText} />
       </div>
       {item.items.map((subItem, index) => (
