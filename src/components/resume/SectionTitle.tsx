@@ -15,7 +15,7 @@ export default function SectionTitle({ defaultValue, index }: { defaultValue: st
     <>
       <label
         htmlFor={htmlFor}
-        className={`${classHoverHighlight} mb-[4px] mt-7 uppercase text-left text-3xl w-fit ${
+        className={`${classHoverHighlight} uppercase text-left text-3xl w-fit ${
           !defaultValue ? 'text-orange-600' : ''
         }`}
       >

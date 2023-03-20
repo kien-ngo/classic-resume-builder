@@ -1,6 +1,7 @@
 import { TSection } from '@src/types/resume';
 import { Fragment } from 'react';
 import AddHighlight from '../modals/AddHighlight';
+import DeleteSectionBtn from './DeleteSectionBtn';
 import SectionItemDuration from './SectionItemDuration';
 import SectionItemHighlight from './SectionItemHighlight';
 import SectionItemLink from './SectionItemLink';
@@ -17,7 +18,10 @@ export default function Section(props: TSectionProps) {
   const { item, mainIndex } = props;
   return (
     <div className="flex flex-col">
-      <SectionTitle defaultValue={item.displayText} index={mainIndex} />
+      <div className="flex flex-row mb-[4px] mt-7">
+        <SectionTitle defaultValue={item.displayText} index={mainIndex} />
+        <DeleteSectionBtn index={mainIndex} title={item.displayText} />
+      </div>
       {item.items.map((subItem, index) => (
         <div className="border-t border-light-black flex flex-col pb-5" key={subItem.name}>
           <div className="flex flex-row justify-between mt-2">
@@ -52,11 +56,7 @@ export default function Section(props: TSectionProps) {
           >
             [+ Add new highlight]
           </label>
-          <AddHighlight
-            htmlFor={`addMoreHighlight_${mainIndex}_${index}`}
-            index={mainIndex}
-            subIndex={index}
-          />
+          <AddHighlight htmlFor={`addMoreHighlight_${mainIndex}_${index}`} index={mainIndex} subIndex={index} />
         </div>
       ))}
     </div>
