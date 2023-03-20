@@ -47,7 +47,6 @@ const HomePage: NextPage = () => {
           </div>
         </div>
       </div>
-      <a href="" id="downloadResumeBackupData" className="hidden"></a>
     </div>
   );
 };

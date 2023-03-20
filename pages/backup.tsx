@@ -41,6 +41,7 @@ export default function BackupPage() {
       >
         Backup
       </button>
+      <a href="" id="downloadResumeBackupData" className="hidden"></a>
     </div>
   );
 }

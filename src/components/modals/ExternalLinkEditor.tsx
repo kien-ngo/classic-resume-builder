@@ -13,9 +13,7 @@ export default function ExternalLinkEditor(props: TExternalLinkEditorProps) {
   const inputDisplayTextRef = useRef<HTMLInputElement>(null);
   const inputLinkRef = useRef<HTMLInputElement>(null);
   const [externalLinks, setExternalLinks] = useAtom(extraLinksAtom);
-  const validateItem = (url: string): boolean => {
-    return true;
-  };
+
   const saveValue = () => {
     const linkObj: TExtraLink = {
       displayText: inputDisplayTextRef.current?.value.trim() ?? '',
@@ -36,6 +34,15 @@ export default function ExternalLinkEditor(props: TExternalLinkEditorProps) {
     if (inputLinkRef.current) {
       inputLinkRef.current.value = defaultValue.link;
     }
+  };
+  const deleteItem = () => {
+    const newLinks = externalLinks.filter((o) => o.link !== defaultValue.link);
+    setExternalLinks(newLinks);
+    closePopup();
+  };
+  const closePopup = () => {
+    const _switch = document.getElementById(htmlFor) as HTMLInputElement;
+    _switch.checked = false;
   };
   return (
     <>
@@ -62,6 +69,9 @@ export default function ExternalLinkEditor(props: TExternalLinkEditorProps) {
               <label className="text-white my-auto mr-3 w-[90px] text-right">URL</label>
               <input ref={inputLinkRef} className="text-white p-4 w-full" defaultValue={defaultValue.link} />
             </div>
+            <button className="text-red-600 mt-2 hover:underline" onClick={deleteItem}>
+              [DELETE THIS ITEM]
+            </button>
             <div className="flex flex-row flex-wrap justify-between w-[250px] mx-auto mt-5">
               <label htmlFor={htmlFor} className="btn btn-success" onClick={saveValue}>
                 Save

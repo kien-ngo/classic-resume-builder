@@ -1,4 +1,5 @@
 import { TSection } from '@src/types/resume';
+import { Fragment } from 'react';
 import SectionItemDuration from './SectionItemDuration';
 import SectionItemHighlight from './SectionItemHighlight';
 import SectionItemLink from './SectionItemLink';
@@ -36,12 +37,20 @@ export default function Section(props: TSectionProps) {
           {subItem.highlights.length && (
             <ul className="pl-[6px] mt-[5px]">
               {subItem.highlights.map((highlight, i) => (
-                <li
-                  className={`text-10pt ml-3 text-left list-disc ${i < subItem.highlights.length - 1 ? 'mb-3' : ''}`}
-                  key={i}
-                >
-                  <SectionItemHighlight defaultValue={highlight} htmlFor={`sectionHighlight_${subItem.name}_${i}`} />
-                </li>
+                <Fragment key={i}>
+                  {highlight && (
+                    <li
+                      className={`text-10pt ml-3 text-left list-disc ${
+                        i < subItem.highlights.length - 1 ? 'mb-3' : ''
+                      }`}
+                    >
+                      <SectionItemHighlight
+                        defaultValue={highlight}
+                        htmlFor={`sectionHighlight_${subItem.name}_${i}`}
+                      />
+                    </li>
+                  )}
+                </Fragment>
               ))}
             </ul>
           )}
