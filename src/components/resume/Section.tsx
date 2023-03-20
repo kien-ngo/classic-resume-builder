@@ -1,5 +1,6 @@
 import { TSection } from '@src/types/resume';
 import { Fragment } from 'react';
+import AddHighlight from '../modals/AddHighlight';
 import SectionItemDuration from './SectionItemDuration';
 import SectionItemHighlight from './SectionItemHighlight';
 import SectionItemLink from './SectionItemLink';
@@ -45,14 +46,17 @@ export default function Section(props: TSectionProps) {
               ))}
             </ul>
           )}
-          <button
-            className="hover:underline font-bold mt-3 text-orange-600"
-            onClick={() => {
-              alert('Coming soon');
-            }}
+          <label
+            className="hover:underline font-bold mt-3 text-orange-600 cursor-pointer"
+            htmlFor={`addMoreHighlight_${mainIndex}_${index}`}
           >
             [+ Add new highlight]
-          </button>
+          </label>
+          <AddHighlight
+            htmlFor={`addMoreHighlight_${mainIndex}_${index}`}
+            index={mainIndex}
+            subIndex={index}
+          />
         </div>
       ))}
     </div>
