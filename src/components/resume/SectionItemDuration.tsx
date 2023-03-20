@@ -21,6 +21,7 @@ export default function SectionItemDuration({ index, subIndex }: { index: number
         htmlFor={htmlFor}
         saveFn={updateSectionDuration}
         title="Edit duration"
+        isOptional={true}
       />
     </>
   );

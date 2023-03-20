@@ -13,7 +13,7 @@ export default function SectionTitle({ defaultValue, index }: { defaultValue: st
 
   return (
     <>
-      <label htmlFor={htmlFor} className={`${classHoverHighlight} mb-[4px] mt-5 uppercase text-left text-3xl w-fit`}>
+      <label htmlFor={htmlFor} className={`${classHoverHighlight} mb-[4px] mt-7 uppercase text-left text-3xl w-fit`}>
         {defaultValue ? defaultValue : '[Add section title]'}
       </label>
       <TextInputEditor htmlFor={htmlFor} defaultValue={defaultValue} saveFn={updateSectionTitle} />

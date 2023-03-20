@@ -21,6 +21,7 @@ export default function SectionItemLocation({ index, subIndex }: { index: number
         htmlFor={htmlFor}
         saveFn={updateSectionLocation}
         title="Edit role"
+        isOptional={true}
       />
     </>
   );
