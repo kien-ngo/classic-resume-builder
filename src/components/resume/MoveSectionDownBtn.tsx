@@ -11,7 +11,7 @@ export default function MoveSectionDownBtn({ index }: { index: number }) {
   };
   return (
     <button
-      className="hover:bg-blue-600 border border-blue-600 text-blue-600 h-fit w-fit my-auto px-2 rounded hover:text-white ml-2"
+      className="hover:bg-blue-600 border border-blue-600 text-blue-600 h-fit w-fit my-auto px-2 rounded hover:text-white ml-2 text-xs"
       onClick={moveBtnDown}
     >
       Move down

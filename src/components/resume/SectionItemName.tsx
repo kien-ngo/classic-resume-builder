@@ -14,7 +14,7 @@ export default function SectionItemName({ index, subIndex }: { index: number; su
   };
   return (
     <>
-      <label htmlFor={htmlFor} className={`${classHoverHighlight} font-bold ${!item.name ? 'text-orange-600' : ''}`}>
+      <label htmlFor={htmlFor} className={`${classHoverHighlight} text-16pt font-bold ${!item.name ? 'text-orange-600' : ''}`}>
         {item.name ? item.name : '[+ Add a name]'}
       </label>
       <TextInputEditor defaultValue={item.name} htmlFor={htmlFor} saveFn={updateSectionName} />

@@ -1,13 +1,21 @@
 import { sectionsAtom } from '@src/store/jotai';
 import { useAtom } from 'jotai';
 
-export default function DeleteSectionBtn({ index, title }: { index: number; title: string }) {
+export default function DeleteSectionItemBtn({
+  index,
+  subIndex,
+  title,
+}: {
+  index: number;
+  subIndex: number;
+  title: string;
+}) {
   const [sections, setSections] = useAtom(sectionsAtom);
   const deleteSection = () => {
-    const text = `Delete section [${title}] ?`;
+    const text = `Delete item [${title}] ?`;
     if (!confirm(text)) return;
-    const newData = sections.filter((o, i) => i !== index);
-    setSections(newData);
+    sections[index].items = sections[index].items.filter((o, i) => i !== subIndex);
+    setSections([...sections]);
   };
   return (
     <button

@@ -67,14 +67,12 @@ export const DEFAULT_PROFILE: TResumeProfile = {
           highlights: ['A simple web app to create & custom your resume'],
         },
         {
-          link: 'https://project2.com',
-          name: 'Project No. 2',
-          duration: '',
-          location: 'Toronto, ON',
-          title: 'Name of the project',
-          highlights: [
-            'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam deserunt doloremque, corporis praesentium maxime tenetur ab voluptate eius aut ad eos reiciendis molestias, voluptas perspiciatis labore! Sint dolores minus voluptates.',
-          ],
+          link: 'https://github.com/Sunflower-Finance',
+          name: 'Sunflower Finance (coming soon)',
+          duration: 'June 2022 - Current',
+          location: 'Remote',
+          title: 'Front-end Developer',
+          highlights: ['A personal finance app'],
         },
       ],
     },
@@ -89,7 +87,7 @@ export const DEFAULT_PROFILE: TResumeProfile = {
           title: 'Software Engineering & Game Programming',
           highlights: [
             'Courses: Game design, Three-dimensional graphics programming, Simulation design & Multiplayer online game programming',
-            'Graduated with one year of real-life work experience'
+            'Interned for 2 different companies. Graduated with one year of real-life work experience',
           ],
         },
         {

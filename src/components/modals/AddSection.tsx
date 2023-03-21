@@ -1,11 +1,12 @@
 import { sectionsAtom } from '@src/store/jotai';
+import { TSection } from '@src/types/resume';
 import { useAtom } from 'jotai';
 import { useRef } from 'react';
 
 type TAddHighlightProps = {};
 
 export default function AddSection(props: TAddHighlightProps) {
-  const inputRef = useRef<HTMLTextAreaElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const [sections, setSections] = useAtom(sectionsAtom);
   const addNewSectionHighlight = () => {
     if (!inputRef.current?.value) {
@@ -13,6 +14,11 @@ export default function AddSection(props: TAddHighlightProps) {
       return;
     }
     const value = inputRef.current.value;
+    const newSection: TSection = {
+      displayText: value,
+      items: [],
+    };
+    sections.push(newSection);
     setSections([...sections]);
   };
   const resetValue = () => {
@@ -20,7 +26,15 @@ export default function AddSection(props: TAddHighlightProps) {
       inputRef.current.value = '';
     }
   };
-
+  const closePopup = () => {
+    const _switch = document.getElementById('AddNewSection') as HTMLInputElement;
+    _switch.checked = false;
+  };
+  const handleKeyUp = (event: React.KeyboardEvent) => {
+    if (event.key !== 'Enter') return;
+    addNewSectionHighlight();
+    closePopup();
+  };
   return (
     <>
       <input type="checkbox" id="AddNewSection" className="modal-toggle" />
@@ -34,8 +48,15 @@ export default function AddSection(props: TAddHighlightProps) {
             </label>
           </div>
           <div className="flex flex-col mt-8">
-            <textarea ref={inputRef} className="text-white p-4 text-base" cols={50} rows={10}></textarea>
-
+            <div className="flex flex-row justify-start">
+              <label className="text-white my-auto mr-3 w-[90px] text-right">Section title</label>
+              <input
+                className="text-white p-4 text-base w-full"
+                placeholder='eg. "Volunteer", "Work Experience" etc.'
+                ref={inputRef}
+                onKeyUp={handleKeyUp}
+              />
+            </div>
             <div className="flex flex-row flex-wrap justify-between w-[250px] mx-auto mt-5">
               <label htmlFor="AddNewSection" className="btn btn-success" onClick={addNewSectionHighlight}>
                 Save
