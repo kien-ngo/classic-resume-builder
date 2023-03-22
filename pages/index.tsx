@@ -7,6 +7,7 @@ import Intro from '@src/components/resume/Intro';
 import ExternalLinksContainer from '@src/components/resume/ExternalLinksContainer';
 import SectionContainer from '@src/components/resume/SectionContainer';
 import Link from 'next/link';
+import UploadResumeBtn from '@src/components/resume/UploadResumeBtn';
 
 const HomePage: NextPage = () => {
   return (
@@ -15,6 +16,7 @@ const HomePage: NextPage = () => {
         {/* <button className="hover:border hover:border-white px-2 py-1 border border-transparent duration-150 h-fit my-auto rounded-lg ml-4">
           Download
         </button> */}
+        <UploadResumeBtn />
         <Link
           href="/backup"
           className="hover:border hover:border-white px-2 py-1 border border-transparent duration-150 h-fit my-auto rounded-lg ml-4"
