@@ -1,6 +1,7 @@
 import { TSection } from '@src/types/resume';
 import { Fragment } from 'react';
 import AddHighlight from '../modals/AddHighlight';
+import AddNewItemBtn from './AddNewItemBtn';
 import DeleteSectionBtn from './DeleteSectionBtn';
 import DeleteSectionItemBtn from './DeleteSectionItemBtn';
 import MoveSectionDownBtn from './MoveSectionDownBtn';
@@ -42,7 +43,7 @@ export default function Section(props: TSectionProps) {
           </div>
           <SectionItemLink index={mainIndex} subIndex={index} />
           <ul className="pl-[6px] mt-[5px]">
-            {subItem.highlights.length && (
+            {subItem.highlights.length > 0 && (
               <>
                 {subItem.highlights.map((highlight, i) => (
                   <Fragment key={i}>
@@ -71,9 +72,7 @@ export default function Section(props: TSectionProps) {
           <AddHighlight htmlFor={`addMoreHighlight_${mainIndex}_${index}`} index={mainIndex} subIndex={index} />
         </div>
       ))}
-      <label htmlFor="" className="w-fit mt-6 cursor-pointer hover:underline font-bold text-orange-600">
-        [+ Add new item]
-      </label>
+      <AddNewItemBtn index={mainIndex}/>
     </div>
   );
 }
