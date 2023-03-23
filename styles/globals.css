@@ -4,6 +4,7 @@
 
 html,
 body {
+  color-scheme: dark;
   color: white;
   background: black;
   padding: 0;

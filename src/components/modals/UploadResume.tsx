@@ -2,11 +2,13 @@ import {
   contactAddressAtom,
   emailAtom,
   extraLinksAtom,
+  introAtom,
   nameAtom,
   phoneNumberAtom,
   sectionsAtom,
 } from '@src/store/jotai';
 import { TResumeProfile } from '@src/types/resume';
+import { closePopup } from '@src/utils/closePopup';
 import { useAtom } from 'jotai';
 
 export default function UploadResumeModal() {
@@ -14,6 +16,7 @@ export default function UploadResumeModal() {
   const [, setName] = useAtom(nameAtom);
   const [, setPhone] = useAtom(phoneNumberAtom);
   const [, setEmail] = useAtom(emailAtom);
+  const [, setIntro] = useAtom(introAtom);
   const [, setExternalLinks] = useAtom(extraLinksAtom);
   const [, setSections] = useAtom(sectionsAtom);
 
@@ -30,9 +33,15 @@ export default function UploadResumeModal() {
           console.log(jsonObject);
           // Start validating the json content
           if (!validateJsonContent(jsonObject)) return alert('Invalid json content');
-          setName(jsonObject.name);
-          setAddress(jsonObject.contact.address);
-          closePopup();
+          const { name, intro, sections, extraLinks, contact } = jsonObject;
+          setName(name);
+          setAddress(contact.address);
+          setPhone(contact.phone);
+          setEmail(contact.email);
+          setIntro(intro);
+          setSections(sections);
+          setExternalLinks(extraLinks);
+          closePopup('UploadResume');
         } catch (error) {
           console.error(error);
           // Handle JSON parsing error
@@ -44,11 +53,13 @@ export default function UploadResumeModal() {
     }
   };
   const validateJsonContent = (jsonContent: any): Boolean => {
+    try {
+
+    }
+    catch (err) {
+      return false;
+    }
     return true;
-  };
-  const closePopup = () => {
-    const _switch = document.getElementById('UploadResume') as HTMLInputElement;
-    _switch.checked = false;
   };
   return (
     <>

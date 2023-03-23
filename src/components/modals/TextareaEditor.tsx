@@ -1,4 +1,5 @@
-import { useRef, useState } from 'react';
+import { closePopup } from '@src/utils/closePopup';
+import { useRef } from 'react';
 
 type TTextEditorProps = {
   htmlFor: string;
@@ -20,14 +21,9 @@ export default function TextareaEditor(props: TTextEditorProps) {
     }
   };
 
-  const closePopup = () => {
-    const _switch = document.getElementById(htmlFor) as HTMLInputElement;
-    _switch.checked = false;
-  };
-
   const deleteItem = () => {
     saveFn('');
-    closePopup();
+    closePopup(htmlFor);
   };
   return (
     <>

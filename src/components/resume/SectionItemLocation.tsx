@@ -13,7 +13,7 @@ export default function SectionItemLocation({ index, subIndex }: { index: number
   };
   return (
     <>
-      <label htmlFor={htmlFor} className={`${classHoverHighlight} ${!item.location ? 'text-orange-600 font-bold' : ''}`}>
+      <label htmlFor={htmlFor} className={`h-fit my-auto ${classHoverHighlight} ${!item.location ? 'text-orange-600 font-bold' : ''}`}>
         {item.location ? item.location : '[+ Add location]'}
       </label>
       <TextInputEditor

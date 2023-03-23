@@ -1,5 +1,6 @@
 import { extraLinksAtom } from '@src/store/jotai';
 import { TExtraLink } from '@src/types/resume';
+import { closePopup } from '@src/utils/closePopup';
 import { useAtom } from 'jotai';
 import { useRef } from 'react';
 
@@ -38,12 +39,9 @@ export default function ExternalLinkEditor(props: TExternalLinkEditorProps) {
   const deleteItem = () => {
     const newLinks = externalLinks.filter((o) => o.link !== defaultValue.link);
     setExternalLinks(newLinks);
-    closePopup();
+    closePopup(htmlFor);
   };
-  const closePopup = () => {
-    const _switch = document.getElementById(htmlFor) as HTMLInputElement;
-    _switch.checked = false;
-  };
+
   return (
     <>
       <input type="checkbox" id={htmlFor} className="modal-toggle" />

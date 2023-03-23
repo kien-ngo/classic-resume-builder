@@ -1,5 +1,6 @@
 import { sectionsAtom } from '@src/store/jotai';
 import { TSection } from '@src/types/resume';
+import { closePopup } from '@src/utils/closePopup';
 import { useAtom } from 'jotai';
 import { useRef } from 'react';
 
@@ -26,14 +27,11 @@ export default function AddSection(props: TAddHighlightProps) {
       inputRef.current.value = '';
     }
   };
-  const closePopup = () => {
-    const _switch = document.getElementById('AddNewSection') as HTMLInputElement;
-    _switch.checked = false;
-  };
+
   const handleKeyUp = (event: React.KeyboardEvent) => {
     if (event.key !== 'Enter') return;
     addNewSectionHighlight();
-    closePopup();
+    closePopup('AddNewSection');
   };
   return (
     <>

@@ -6,29 +6,22 @@ import Email from '@src/components/resume/Email';
 import Intro from '@src/components/resume/Intro';
 import ExternalLinksContainer from '@src/components/resume/ExternalLinksContainer';
 import SectionContainer from '@src/components/resume/SectionContainer';
-import Link from 'next/link';
 import UploadResumeBtn from '@src/components/resume/UploadResumeBtn';
+import DownloadBackupBtn from '@src/components/resume/DownloadBackupBtn';
+import Link from 'next/link';
 
 const HomePage: NextPage = () => {
   return (
     <div className="flex flex-col pt-7">
-      <div className="h-10 bg-indigo-700 flex flex-row justify-end px-6 fixed top-0 w-full z-10">
-        {/* <button className="hover:border hover:border-white px-2 py-1 border border-transparent duration-150 h-fit my-auto rounded-lg ml-4">
-          Download
-        </button> */}
+      <div className="h-10 bg-indigo-700 flex flex-row justify-center px-6 fixed top-0 w-full z-10 font-bold">
         <UploadResumeBtn />
+        <DownloadBackupBtn />
         <Link
-          href="/backup"
+          href="preview"
           className="hover:border hover:border-white px-2 py-1 border border-transparent duration-150 h-fit my-auto rounded-lg ml-4"
         >
-          Backup
+          Preview & Print
         </Link>
-        {/* <button className="hover:border hover:border-white px-2 py-1 border border-transparent duration-150 h-fit my-auto rounded-lg ml-4">
-          Preview
-        </button>
-        <button className="hover:border hover:border-white px-2 py-1 border border-transparent duration-150 h-fit my-auto rounded-lg ml-4">
-          Print
-        </button> */}
       </div>
       <div className="overflow-y-auto mx-auto flex mt-5">
         {/* This is the A4 Paper content */}

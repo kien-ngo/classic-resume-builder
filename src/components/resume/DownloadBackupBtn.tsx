@@ -10,7 +10,7 @@ import {
 import { TResumeProfile } from '@src/types/resume';
 import { useAtom } from 'jotai';
 
-export default function BackupPage() {
+export default function DownloadBackupBtn() {
   const [name] = useAtom(nameAtom);
   const [intro] = useAtom(introAtom);
   const [email] = useAtom(emailAtom);
@@ -33,15 +33,16 @@ export default function BackupPage() {
     dlAnchorElem.setAttribute('download', 'resume_backup.json');
     dlAnchorElem.click();
   };
+
   return (
-    <div>
+    <>
       <button
         onClick={downloadJsonBackup}
         className="hover:border hover:border-white px-2 py-1 border border-transparent duration-150 h-fit my-auto rounded-lg ml-4"
       >
-        Backup
+        Download Backup
       </button>
       <a href="" id="downloadResumeBackupData" className="hidden"></a>
-    </div>
+    </>
   );
 }

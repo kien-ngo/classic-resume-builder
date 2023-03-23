@@ -1,3 +1,4 @@
+import { closePopup } from '@src/utils/closePopup';
 import { useRef } from 'react';
 
 type TTextEditorProps = {
@@ -19,10 +20,6 @@ export default function TextInputEditor(props: TTextEditorProps) {
     }
     if (inputRef.current) inputRef.current.value = defaultValue;
   };
-  const closePopup = () => {
-    const _switch = document.getElementById(htmlFor) as HTMLInputElement;
-    _switch.checked = false;
-  };
   const handleKeyUp = (event: React.KeyboardEvent) => {
     if (event.key !== 'Enter') return;
     if (validationFn) {
@@ -30,11 +27,11 @@ export default function TextInputEditor(props: TTextEditorProps) {
       if (!res.passed) return alert(res.error);
     }
     saveFn(inputRef.current?.value.trim());
-    closePopup();
+    closePopup(htmlFor);
   };
   const deleteItem = () => {
     saveFn('');
-    closePopup();
+    closePopup(htmlFor);
   };
   return (
     <>
